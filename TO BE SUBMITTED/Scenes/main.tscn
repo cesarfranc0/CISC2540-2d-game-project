@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://doooy1k5ml1vf"]
+
+[ext_resource type="PackedScene" uid="uid://i47hebiy4itj" path="res://platform.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://syjw5qlhvk2i" path="res://player.tscn" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://cx37ilbjx4bgh" path="res://platform_spawner.gd" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://cmqhh22i8pw8l" path="res://score_manager.gd" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://c67h5o305qb8s" path="res://token.tscn" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://dx2jim5paqb38" path="res://coin_spawner.gd" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://drkrki8a54ng3" path="res://breakable_platform.tscn" id="7_5vw27"]
+[ext_resource type="Texture2D" uid="uid://sw55qjdmamc2" path="res://cobble.webp" id="7_272bh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_272bh"]
+font_size = 30
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(192, 480)
+
+[node name="ScoreManager" type="Node" parent="."]
+script = ExtResource("4_1bvp3")
+
+[node name="Token" parent="." instance=ExtResource("5_lquwl")]
+position = Vector2(144, 371)
+
+[node name="CoinSpawner" type="Node2D" parent="."]
+script = ExtResource("6_7mycd")
+coin_scene = ExtResource("5_lquwl")
+
+[node name="Platform" parent="." instance=ExtResource("1_0xm2m")]
+position = Vector2(220, 599)
+
+[node name="PlatformSpawner" type="Node2D" parent="."]
+script = ExtResource("3_h2yge")
+platform_scene = ExtResource("1_0xm2m")
+breakable_platform_scene = ExtResource("7_5vw27")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
+position = Vector2(541, 120)
+texture = ExtResource("7_272bh")
+region_enabled = true
+region_rect = Rect2(0, 0, 1200, 10000)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="HUD" groups=["score_label"]]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Score = 0"
+label_settings = SubResource("LabelSettings_272bh")
