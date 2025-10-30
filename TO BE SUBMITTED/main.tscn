@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpgpr86eud17n"]
+[gd_scene load_steps=10 format=3 uid="uid://dpgpr86eud17n"]
 
-[ext_resource type="PackedScene" path="res://platform.tscn" id="1_0xm2m"]
-[ext_resource type="PackedScene" path="res://player.tscn" id="2_h2yge"]
-[ext_resource type="Script" path="res://platform_spawner.gd" id="3_h2yge"]
-[ext_resource type="Script" path="res://score_manager.gd" id="4_1bvp3"]
-[ext_resource type="PackedScene" path="res://token.tscn" id="5_lquwl"]
-[ext_resource type="Script" path="res://coin_spawner.gd" id="6_7mycd"]
-[ext_resource type="Texture2D" path="res://cobble.webp" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://cj51ivgjeep1n" path="res://platform.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bkq5le8tw4fcf" path="res://player.tscn" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://cx37ilbjx4bgh" path="res://Scripts/platform_spawner.gd" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://cmqhh22i8pw8l" path="res://Scripts/score_manager.gd" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dxo7fwcenwtwv" path="res://token.tscn" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://dx2jim5paqb38" path="res://Scripts/coin_spawner.gd" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://sw55qjdmamc2" path="res://Assets/cobble.webp" id="7_272bh"]
+[ext_resource type="Script" uid="uid://dugkebvmkfbht" path="res://Scripts/retry.gd" id="8_5vw27"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_272bh"]
 font_size = 30
@@ -15,12 +16,14 @@ font_size = 30
 
 [node name="Player" parent="." instance=ExtResource("2_h2yge")]
 position = Vector2(192, 480)
+script = null
 
 [node name="ScoreManager" type="Node" parent="."]
 script = ExtResource("4_1bvp3")
 
 [node name="Token" parent="." instance=ExtResource("5_lquwl")]
 position = Vector2(144, 371)
+script = null
 
 [node name="CoinSpawner" type="Node2D" parent="."]
 script = ExtResource("6_7mycd")
@@ -46,9 +49,41 @@ region_enabled = true
 region_rect = Rect2(0, 0, 1200, 10000)
 
 [node name="HUD" type="CanvasLayer" parent="."]
+process_mode = 2
+follow_viewport_enabled = true
 
 [node name="Label" type="Label" parent="HUD" groups=["score_label"]]
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_font_sizes/font_size = 24
 text = "Score = 0"
 label_settings = SubResource("LabelSettings_272bh")
+
+[node name="Retry" type="Control" parent="HUD"]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 223.0
+offset_top = 461.0
+offset_right = 223.0
+offset_bottom = 461.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+script = ExtResource("8_5vw27")
+
+[node name="ColorRect" type="ColorRect" parent="HUD/Retry"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="Button" type="Button" parent="HUD/Retry"]
+layout_mode = 0
+offset_left = -66.0
+offset_top = -47.0
+offset_right = 34.0
+offset_bottom = -8.0
+text = "Retry"

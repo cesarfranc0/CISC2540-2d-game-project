@@ -1,9 +1,9 @@
 [gd_scene load_steps=25 format=3 uid="uid://bkq5le8tw4fcf"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_i3pqv"]
-[ext_resource type="Texture2D" path="res://Characters(100x100)/Soldier/Soldier/Soldier-Idle.png" id="1_onrkg"]
-[ext_resource type="Texture2D" path="res://Characters(100x100)/Soldier/Soldier/Soldier-Death.png" id="2_hqtel"]
-[ext_resource type="Texture2D" path="res://Characters(100x100)/Soldier/Soldier/Soldier-Walk.png" id="2_i3pqv"]
+[ext_resource type="Script" uid="uid://8o5hakgu8fa5" path="res://Scripts/player.gd" id="1_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://uydkhrx6u7fw" path="res://Assets/Characters(100x100)/Soldier/Soldier/Soldier-Idle.png" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://ct7mxxb1q6wif" path="res://Assets/Characters(100x100)/Soldier/Soldier/Soldier-Death.png" id="2_hqtel"]
+[ext_resource type="Texture2D" uid="uid://ceyd23ymnfb6h" path="res://Assets/Characters(100x100)/Soldier/Soldier/Soldier-Walk.png" id="2_i3pqv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q13i1"]
 atlas = ExtResource("2_hqtel")
