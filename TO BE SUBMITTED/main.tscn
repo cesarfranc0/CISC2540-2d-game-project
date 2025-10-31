@@ -60,6 +60,7 @@ text = "Score = 0"
 label_settings = SubResource("LabelSettings_272bh")
 
 [node name="Retry" type="Control" parent="HUD"]
+process_mode = 3
 z_index = 100
 layout_mode = 3
 anchors_preset = 15
@@ -76,14 +77,24 @@ script = ExtResource("8_5vw27")
 
 [node name="ColorRect" type="ColorRect" parent="HUD/Retry"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -279.0
+offset_top = -149.0
+offset_right = 375.0
+offset_bottom = 263.0
 color = Color(0, 0, 0, 0.5019608)
 
 [node name="Button" type="Button" parent="HUD/Retry"]
-layout_mode = 0
-offset_left = -66.0
-offset_top = -47.0
-offset_right = 34.0
-offset_bottom = -8.0
+process_mode = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.11400001
+anchor_top = 0.1
+anchor_right = 0.19100001
+anchor_bottom = 0.14500001
+offset_left = -11.328003
+offset_top = -9.800003
+offset_right = -0.03201294
+offset_bottom = 0.039993286
 text = "Retry"
+
+[connection signal="pressed" from="HUD/Retry/Button" to="HUD/Retry" method="_on_button_pressed"]

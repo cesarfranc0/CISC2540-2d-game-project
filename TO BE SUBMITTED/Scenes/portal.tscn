@@ -65,6 +65,7 @@ animations = [{
 [node name="portal" type="Node2D"]
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 script = ExtResource("1_ef3v5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
