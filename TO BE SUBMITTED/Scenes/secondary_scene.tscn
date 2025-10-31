@@ -1,3 +1,98 @@
-[gd_scene format=3 uid="uid://m3hil2r2br5r"]
+[gd_scene load_steps=10 format=3 uid="uid://m3hil2r2br5r"]
+
+[ext_resource type="PackedScene" uid="uid://dsfllcxb78pxu" path="res://Scenes/ship.tscn" id="1_bcsdp"]
+[ext_resource type="PackedScene" uid="uid://dxo7fwcenwtwv" path="res://token.tscn" id="1_bdfo8"]
+[ext_resource type="Texture2D" uid="uid://bs7fiucr8a55m" path="res://Assets/assetpack/parallax/moon/moon_sky.png" id="2_5xfvi"]
+[ext_resource type="Script" uid="uid://cmqhh22i8pw8l" path="res://Scripts/score_manager.gd" id="2_a42ci"]
+[ext_resource type="Texture2D" uid="uid://d0nusdx4kag0y" path="res://Assets/assetpack/parallax/skies/Sky_front_cloud.png" id="3_vomlb"]
+[ext_resource type="Script" uid="uid://dx2jim5paqb38" path="res://Scripts/coin_spawner.gd" id="4_b1k6s"]
+[ext_resource type="PackedScene" uid="uid://c67h5o305qb8s" path="res://Scenes/token.tscn" id="5_lfd4v"]
+[ext_resource type="Script" uid="uid://dugkebvmkfbht" path="res://Scripts/retry.gd" id="8_c6fx2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bndi2"]
+font_size = 30
 
 [node name="SecondaryScene" type="Node2D"]
+
+[node name="playership" parent="." instance=ExtResource("1_bcsdp")]
+
+[node name="ScoreManager" type="Node" parent="."]
+script = ExtResource("2_a42ci")
+
+[node name="Token" parent="." instance=ExtResource("1_bdfo8")]
+position = Vector2(144, 371)
+script = null
+
+[node name="CoinSpawner" type="Node2D" parent="."]
+script = ExtResource("4_b1k6s")
+coin_scene = ExtResource("5_lfd4v")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="MoonSky" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1524.5, 257)
+scale = Vector2(1.6026316, 1)
+texture = ExtResource("2_5xfvi")
+
+[node name="SkyFrontCloud" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/MoonSky"]
+position = Vector2(4, -1)
+texture = ExtResource("3_vomlb")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="HUD" groups=["score_label"]]
+offset_right = 130.0
+offset_bottom = 42.0
+text = "Score = 0"
+label_settings = SubResource("LabelSettings_bndi2")
+
+[node name="Retry" type="Control" parent="HUD"]
+process_mode = 3
+visible = false
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 239.0
+offset_top = 428.0
+offset_right = 239.0
+offset_bottom = 428.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+script = ExtResource("8_c6fx2")
+
+[node name="ColorRect" type="ColorRect" parent="HUD/Retry"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -313.0
+offset_top = -434.0
+offset_right = -224.0
+offset_bottom = -412.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="Button" type="Button" parent="HUD/Retry"]
+process_mode = 4
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -338.0
+offset_top = -357.0
+offset_right = -238.0
+offset_bottom = -318.0
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+text = "Retry"
+
+[connection signal="pressed" from="HUD/Retry/Button" to="HUD/Retry" method="_on_button_pressed"]

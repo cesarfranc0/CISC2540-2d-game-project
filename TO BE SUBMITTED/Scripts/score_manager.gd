@@ -10,17 +10,14 @@ var score_label: Label
 var portal: Area2D
 
 func _ready() -> void:
-	# Find HUD label by group or by node path
 	score_label = get_tree().get_first_node_in_group("score_label")
 	if score_label == null:
 		score_label = get_node_or_null("/root/Main/HUD/Label") as Label
 
-	# Find the portal placed in the scene (Area2D is inside the portal scene)
 	portal = get_tree().get_first_node_in_group("portal") as Area2D
 	if portal == null:
 		portal = get_node_or_null("/root/Main/portal/Area2D") as Area2D
 
-	# Connect to existing and future tokens
 	for t in get_tree().get_nodes_in_group("tokens"):
 		_connect_token(t)
 	get_tree().node_added.connect(_on_node_added)

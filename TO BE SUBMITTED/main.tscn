@@ -77,9 +77,9 @@ script = ExtResource("8_5vw27")
 
 [node name="ColorRect" type="ColorRect" parent="HUD/Retry"]
 layout_mode = 0
-offset_left = -279.0
+offset_left = -277.0
 offset_top = -149.0
-offset_right = 375.0
+offset_right = 377.0
 offset_bottom = 263.0
 color = Color(0, 0, 0, 0.5019608)
 

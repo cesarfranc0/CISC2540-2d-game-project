@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://dsfllcxb78pxu"]
+
+[ext_resource type="Script" uid="uid://0brl21j1br7n" path="res://Scripts/ship.gd" id="1_4qyt1"]
+[ext_resource type="Texture2D" uid="uid://diaifbu0j0ypo" path="res://Assets/Spaceship/Raumschiff.png" id="2_xxxu3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ejuo"]
+atlas = ExtResource("2_xxxu3")
+region = Rect2(0, 1008, 240, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8aq7e"]
+atlas = ExtResource("2_xxxu3")
+region = Rect2(0, 864, 240, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmder"]
+atlas = ExtResource("2_xxxu3")
+region = Rect2(0, 576, 240, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwcnm"]
+atlas = ExtResource("2_xxxu3")
+region = Rect2(0, 720, 240, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kxdp2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ejuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8aq7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmder")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwcnm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v2j2m"]
+radius = 2.102595
+height = 53.149
+
+[node name="playership" type="CharacterBody2D"]
+script = ExtResource("1_4qyt1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kxdp2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5.822187e-11, 2.9999998)
+rotation = -3.1406379
+scale = Vector2(15.69579, 2.5588427)
+shape = SubResource("CapsuleShape2D_v2j2m")
+
+[node name="Camera2D" type="Camera2D" parent="."]
