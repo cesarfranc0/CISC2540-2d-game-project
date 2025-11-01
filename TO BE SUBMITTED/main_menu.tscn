@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfmjx8xq7nmon"]
+
+[ext_resource type="Script" uid="uid://3jr5ovogn8l8" path="res://main_menu.gd" id="1_06t4h"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_06t4h")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.23921569, 1, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 121.0
+offset_right = 777.0
+offset_bottom = 321.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="YourName" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "TIMEJUMPS!"
+
+[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
