@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjama51i4li44"]
+
+[ext_resource type="Texture2D" uid="uid://dmhsrc2ujcmha" path="res://Scenes/ChatGPT Image Oct 31, 2025, 06_29_12 PM.png" id="1_or237"]
+[ext_resource type="Script" uid="uid://c7ciik8cvt2xv" path="res://Scenes/main_menu_(control).gd" id="2_txaf0"]
+
+[node name="LandingPage" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 1224.0
+offset_bottom = 646.0
+texture = ExtResource("1_or237")
+expand_mode = 1
+
+[node name="Main Menu (Control)" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("2_txaf0")
+
+[node name="CenterContainer" type="CenterContainer" parent="Main Menu (Control)"]
+layout_mode = 1
+offset_left = -41.0
+offset_top = -168.0
+offset_right = 1119.0
+offset_bottom = 848.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu (Control)/CenterContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="Main Menu (Control)/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "PLAY"
+
+[connection signal="pressed" from="Main Menu (Control)/CenterContainer/VBoxContainer/PlayButton" to="Main Menu (Control)" method="_on_play_button_pressed"]

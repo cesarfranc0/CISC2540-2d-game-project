@@ -11,6 +11,6 @@ config_version=5
 [application]
 
 config/name="2d game project"
-run/main_scene="uid://doooy1k5ml1vf"
+run/main_scene="uid://bjama51i4li44"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
